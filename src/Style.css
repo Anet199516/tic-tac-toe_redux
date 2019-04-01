@@ -1,0 +1,60 @@
+.Ceil-container {
+    width: 450px;
+    height: 450px;
+    background-color: aquamarine;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    
+}
+
+.Title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.Restart-Btn {
+    font-size: 25px;
+    font-style: italic;
+    height: 50px;
+    width: 150px;
+    display:block;
+    position: relative;
+    border: 2px solid grey;
+    margin:0 auto;
+    border-radius: 15px;   
+    top: 20px;
+}
+
+.Restart-Btn:hover {
+    cursor: pointer;
+    background-color: lightsalmon;
+}
+
+.Restart-Btn:focus {
+    outline: none;
+}
+
+.Restart-Btn:active {
+    transform: translateY(4px);
+    filter: saturate(150%);
+    outline: none;
+}
+
+.Cell {
+    font-family: 'Coiny', cursive;
+    text-align: center;
+    height: 150px;
+    width: 150px;
+    font-size: 120px;
+    border: 2px solid white;
+    background-color: aquamarine;
+    float: left;
+    box-sizing: border-box;
+}
+.Cell:hover {
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid black;
+}
