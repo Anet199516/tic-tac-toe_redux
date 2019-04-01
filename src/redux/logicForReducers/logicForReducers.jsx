@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable import/prefer-default-export */
 const winnerPositions = [
   [0, 1, 2],
   [0, 3, 6],
@@ -8,28 +10,6 @@ const winnerPositions = [
   [3, 4, 5],
   [6, 7, 8],
 ];
-
-
-const fillCell = (state, index) => {
-  let { winner, currentTurn } = state;
-  const { cells } = state;
-  if (cells[index] !== null) {
-    return;
-  }
-  if (winner !== null) {
-    return;
-  }
-
-  const mark = currentTurn % 2 === 1 ? 'X' : 'O';
-  cells[index] = mark;
-  currentTurn += 1;
-  winner = this.checkWinner(cells);
-  this.setState({
-    cells,
-    currentTurn,
-    winner,
-  });
-};
 
 const checkWinner = (cells) => {
   for (const position of winnerPositions) {
@@ -42,4 +22,26 @@ const checkWinner = (cells) => {
     }
   }
   return null;
+};
+
+
+export const fillCell = (state, index) => {
+  let { winner, currentTurn } = state;
+  const { cells } = state;
+  if (cells[index] !== null) {
+    return state;
+  }
+  if (winner !== null) {
+    return state;
+  }
+
+  const mark = currentTurn % 2 === 1 ? 'X' : 'O';
+  cells[index] = mark;
+  currentTurn += 1;
+  winner = checkWinner(cells);
+  return {
+    cells,
+    currentTurn,
+    winner,
+  }
 };

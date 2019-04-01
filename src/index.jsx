@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 import App from './App';
+import { fillCell } from './redux/logicForReducers/logicForReducers';
 
 const initialState = {
   cells: Array(9).fill(null),
@@ -14,11 +14,19 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+  const newState = fillCell(state, action.index);
   switch (action.type) {
     case 'TURN':
-      return {};
+      return {
+        ...state,
+        ...newState,
+      };
     case 'RESET':
-      return {};
+      return {
+        cells: Array(9).fill(null),
+        currentTurn: 1,
+        winner: null,
+      };
     default: return state;
   }
 };
@@ -29,7 +37,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 module.hot.accept();
